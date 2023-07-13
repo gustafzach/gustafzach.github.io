@@ -33,25 +33,27 @@
       align-items: center;
     }
 
-    .grid-container {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-      margin-left: 20px;
-      margin-right: 20px;
+    grid-container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-gap: 20px;
     }
 
-    video {
-      width: 100%;
-      height: auto;
+    .video-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .video-title {
+      font-size: 18px;
       margin-bottom: 10px;
     }
 
-    /* Make all videos have the same height */
     video {
-      aspect-ratio: 16/9;
-      height: 0;
-      padding-bottom: 56.25%;
+      max-width: 100%;
+      height: auto;
     }
 
     .footer {
