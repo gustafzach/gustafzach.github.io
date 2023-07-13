@@ -136,16 +136,24 @@
       </div>
       <div class="video-container">
         <h3 class="video-title">Man Walking without  \( \boldsymbol{v}_{ff}\)</h3>
-        <video controls autoplay loop style="max-width: 100%; max-height: 100%;">
+        <video id="walkingWithoutFF" controls autoplay loop style="max-width: 100%; max-height: 100%;">
           <source src="assets/man_walking_wo_ff.mp4" type="video/mp4">
         </video>
       </div>
       <div class="video-container">
         <h3 class="video-title">Man Walking with \( \boldsymbol{v}_{ff}\)</h3>
-        <video controls autoplay loop style="max-width: 100%; max-height: 100%;">
+        <video id="walkingWithFF" controls autoplay loop style="max-width: 100%; max-height: 100%;">
           <source src="assets/man_walking_w_ff.mp4" type="video/mp4">
         </video>
       </div>
+      
+      <script>
+        var walkingWithoutFF = document.getElementById("walkingWithoutFF");
+        walkingWithoutFF.playbackRate = 0.5;
+      
+        var walkingWithFF = document.getElementById("walkingWithFF");
+        walkingWithFF.playbackRate = 0.5;
+      </script>
       <div class="video-container">
         <h3 class="video-title">Man Walking - Original</h3>
          <video controls autoplay loop style="max-width: 100%; max-height: 100%;">
