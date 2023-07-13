@@ -5,7 +5,6 @@
   <title>My Professional GitHub Page</title>
   <style>
     body {
-      background-color: #000;
       font-family: Arial, sans-serif;
       padding: 40px;
       color: #ddd;
@@ -48,7 +47,6 @@
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 4px;
-      background-color: #222;
     }
 
     video {
@@ -60,6 +58,29 @@
     .footer {
       text-align: center;
       margin-top: 20px;
+    }
+
+    /* Dark Mode Styles */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #000;
+      }
+
+      .video-container {
+        background-color: #222;
+      }
+    }
+
+    /* Light Mode Styles */
+    @media (prefers-color-scheme: light) {
+      body {
+        background-color: #f4f4f4;
+        color: #333;
+      }
+
+      .video-container {
+        background-color: #fff;
+      }
     }
   </style>
 </head>
