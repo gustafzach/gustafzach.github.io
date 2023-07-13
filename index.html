@@ -37,7 +37,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      border: 4px ridge #223B76; /* Adjust the border width */
+      border: 20px ridge #223B76; /* Adjust the border width */
       padding: 10px;
       background-color: white; /* Set the background color */
     }
@@ -62,10 +62,9 @@
     }
 
     .swarm-paper-link {
-      font-size: 24px;
-      color: #007bff; /* Typical blue */
-      margin-bottom: 20px;
-      text-decoration: none;
+    font-size: 16px;
+    color: #007bff; /* Typical blue - light mode */
+    text-decoration: none;
     }
 
     .contact-info {
@@ -82,6 +81,10 @@
 
     /* Dark Mode Styles */
     @media (prefers-color-scheme: dark) {
+      .swarm-paper-link {
+        color: #F1D32A; /* Mustard yellow - dark mode */
+      }
+    
       body {
         background-color: #34352F;
         color: #ddd;
