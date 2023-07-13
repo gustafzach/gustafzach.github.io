@@ -26,12 +26,15 @@
 
     .left-column {
       flex: 1;
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, auto);
+      grid-gap: 20px;
     }
 
     .video-container {
-      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
     }
 
     .video-title {
@@ -41,15 +44,26 @@
 
     .right-column {
       flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       padding-left: 40px;
+      text-align: center;
     }
 
     .description {
       margin-bottom: 20px;
     }
 
+    .swarm-paper-link {
+      font-size: 24px;
+      color: #007bff; /* Typical blue */
+      margin-bottom: 20px;
+      text-decoration: none;
+    }
+
     .contact-info {
-      text-align: right;
+      text-align: center;
     }
 
     /* Light Mode Styles */
@@ -110,6 +124,7 @@
     <div class="right-column">
       <div class="description">
         <p>Welcome to my GitHub page showcasing examples related to swarm algorithms and control systems.</p>
+        <a href="assets/svarm.pdf" class="swarm-paper-link">Swarm Paper</a>
       </div>
 
       <div class="contact-info">
