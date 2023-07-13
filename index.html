@@ -59,26 +59,34 @@
       margin-top: 20px;
     }
 
-    /* Dark Mode Styles */
-    @media (prefers-color-scheme: dark) {
-      body {
-        background-color: #0D1117;
-      }
-    
-      a {
-        color: #FFDB58; /* Mustard-yellow */
-      }
-    }
-
-    /* Light Mode Styles */
+        /* Light Mode Styles */
     @media (prefers-color-scheme: light) {
       body {
         background-color: #f4f4f4;
         color: #333;
       }
     
-      a {
+      .video-container {
+        background-color: #f4f4f4;
+      }
+    
+      a.swarm-paper-link {
         color: #007bff; /* Typical blue */
+      }
+    }
+    
+    /* Dark Mode Styles */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #34352F;
+      }
+    
+      .video-container {
+        background-color: #34352F;
+      }
+    
+      a.swarm-paper-link {
+        color: #FF0000; /* Red */
       }
     }
   </style>
@@ -89,7 +97,7 @@
     <h1>Time-Varying Density Control for Large-Scale Multi-Agent Systems Using Heat and Continuity Equation</h1>
     <p>Welcome to my GitHub page showcasing examples related to swarm algorithms and control systems.</p>
 
-    <a href="assets/svarm.pdf" style="font-size: 24px; color: #F1C9D1; margin-bottom: 20px;">Paper</a>
+    <a href="assets/svarm.pdf" class="swarm-paper-link" style="font-size: 24px; margin-bottom: 20px;">Paper</a>
 
     <div class="grid-container">
       <div class="video-container">
@@ -130,7 +138,7 @@
     </div>
 
     <div class="footer">
-      <h3>Contact Information:</h3>
+      <h3>Contact Information</h3>
       <p>Name: G Zachrisson</p>
       <p>Email: gustafza@kth.se</p>
     </div>
