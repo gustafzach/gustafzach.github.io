@@ -1,75 +1,104 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-  <title>ATIC Examples</title>
+  <title>My Professional GitHub Page</title>
   <style>
     body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+      padding: 40px;
     }
 
     h1 {
-      font-size: 24px;
+      font-size: 30px;
+      text-align: center;
       margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .grid-container {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       grid-gap: 20px;
+      margin-top: 20px;
     }
 
     .video-container {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-    }
-
-    .video-title {
-      font-size: 18px;
-      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #fff;
     }
 
     video {
       max-width: 100%;
       height: auto;
+      margin-bottom: 10px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 20px;
     }
   </style>
 </head>
 
 <body>
-  <h1>Time-Varying Density Control for Large-Scale Multi-Agent Systems Using
-    Heat and Continuity Equation</h1>
-  <a href="assets/svarm.pdf">Paper</a>
+  <div class="container">
+    <h1>Time-Varying Density Control for Large-Scale Multi-Agent Systems Using Heat and Continuity Equation</h1>
+    <a href="assets/svarm.pdf">Paper</a>
 
-  <div class="grid-container">
-    <div class="video-container">
-      <h2 class="video-title">Gaussian without ff</h2>
-      <video controls autoplay loop>
-        <source src="assets/gaussian_wo_ff.mp4" type="video/mp4">
-      </video>
+    <div class="grid-container">
+      <div class="video-container">
+        <h2>Gaussian without ff</h2>
+        <video controls autoplay loop>
+          <source src="assets/gaussian_wo_ff.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-container">
+        <h2>Gaussian with ff</h2>
+        <video controls autoplay loop>
+          <source src="assets/gaussian_w_ff.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-container">
+        <h2>Walking man without ff</h2>
+        <video controls autoplay loop>
+          <source src="assets/man_walking_wo_ff.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-container">
+        <h2>Walking man with ff</h2>
+        <video controls autoplay loop>
+          <source src="assets/man_walking_w_ff.mp4" type="video/mp4">
+        </video>
+      </div>
     </div>
-    <div class="video-container">
-      <h2 class="video-title">Gaussian with ff</h2>
-      <video controls autoplay loop>
-        <source src="assets/gaussian_w_ff.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="video-container">
-      <h2 class="video-title">Walking man without ff</h2>
-      <video controls autoplay loop onloadstart="this.playbackRate = 0.2">
-        <source src="assets/man_walking_wo_ff.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="video-container">
-      <h2 class="video-title">Walking man with ff</h2>
-      <video controls autoplay loop onloadstart="this.playbackRate = 0.2">
-        <source src="assets/man_walking_w_ff.mp4" type="video/mp4">
-      </video>
+
+    <div class="footer">
+      <h3>Contact Information:</h3>
+      <p>Name: John Smith</p>
+      <p>Email: johnsmith@example.com</p>
+      <p>Phone: +1 123-456-7890</p>
     </div>
   </div>
 </body>
