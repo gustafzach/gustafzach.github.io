@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>G Zachrisson Test GitHub Website</title>
+  <title>G Zachrisson Test Site</title>
   <style>
     body {
       font-family: "Helvetica Neue", Arial, sans-serif;
@@ -48,27 +48,19 @@
       grid-row-end: 3;
     }
 
+    .video-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      background-color: #000;
+    }
 
-   .video-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 10px;
-        background-color: #000;
-      }
-
-video {
+    video {
       width: 100%;
       height: auto;
       margin-bottom: 10px;
-    }
-
-    /* Make all videos have the same height */
-    .video-container video {
-      aspect-ratio: 16/9;
-      height: 0;
-      padding-bottom: 56.25%;
     }
 
     .footer {
@@ -79,15 +71,15 @@ video {
     /* Dark Mode Styles */
     @media (prefers-color-scheme: dark) {
       body {
-        background-color: #0E1117;
+        background-color: #000;
       }
-    
+
       .video-container {
-        background-color: #0E1117;
+        background-color: #000;
       }
-    
+
       a {
-        color: #E8594E; /* Red */
+        color: #ff91a4; /* Salmon Pink */
       }
     }
 
@@ -100,9 +92,6 @@ video {
 
       .video-container {
         background-color: #f4f4f4;
-      }
-      a {
-        color: #2F81F7; /* Blue */
       }
     }
   </style>
