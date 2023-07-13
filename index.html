@@ -8,7 +8,8 @@
       font-family: "Helvetica Neue", Arial, sans-serif;
       padding: 40px;
       color: #ddd;
-      background-color: #000;
+      background-color: #f4f4f4;
+      margin: 0;
     }
 
     h1 {
@@ -17,36 +18,20 @@
       margin-bottom: 20px;
     }
 
-    h2 {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
-
     .container {
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      flex-direction: row;
+      justify-content: center;
     }
 
-    .grid-container {
+    .left-column {
+      flex: 1;
       display: flex;
-      justify-content: center;
-      margin-top: 20px;
-      margin-left: 20px;
-      margin-right: 20px;
+      flex-direction: column;
     }
 
     .video-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 20%;
+      margin-bottom: 20px;
     }
 
     .video-title {
@@ -54,14 +39,17 @@
       margin-bottom: 10px;
     }
 
-    video {
-      max-width: 100%;
-      height: auto;
+    .right-column {
+      flex: 1;
+      padding-left: 40px;
     }
 
-    .footer {
-      text-align: center;
-      margin-top: 20px;
+    .description {
+      margin-bottom: 20px;
+    }
+
+    .contact-info {
+      text-align: right;
     }
 
     /* Light Mode Styles */
@@ -70,84 +58,68 @@
         background-color: #f4f4f4;
         color: #333;
       }
-
-      .grid-container {
-        background-color: #f4f4f4;
-      }
-
-      a.swarm-paper-link {
-        color: #007bff; /* Typical blue */
-      }
     }
 
     /* Dark Mode Styles */
     @media (prefers-color-scheme: dark) {
       body {
-        background-color: #0D1117;
-      }
-
-      .grid-container {
-        background-color: #0D1117;
-      }
-
-      a.swarm-paper-link {
-        color: #D54740; /* Red */
+        background-color: #34352F;
+        color: #ddd;
       }
     }
   </style>
 </head>
 
 <body>
+  <h1>Time-Varying Density Control for Large-Scale Multi-Agent Systems Using Heat and Continuity Equation</h1>
+
   <div class="container">
-    <h1>Time-Varying Density Control for Large-Scale Multi-Agent Systems Using Heat and Continuity Equation</h1>
-    <p>Welcome to my GitHub page showcasing examples related to swarm algorithms and control systems.</p>
-
-    <a href="assets/svarm.pdf" class="swarm-paper-link" style="font-size: 24px; margin-bottom: 20px;">Paper</a>
-
-    <div class="grid-container">
+    <div class="left-column">
       <div class="video-container">
         <h2 class="video-title">Gaussian without ff</h2>
         <video controls autoplay loop>
           <source src="assets/gaussian_wo_ff.mp4" type="video/mp4">
-          Your browser does not support the video tag.
         </video>
       </div>
       <div class="video-container">
         <h2 class="video-title">Gaussian with ff</h2>
         <video controls autoplay loop>
           <source src="assets/gaussian_w_ff.mp4" type="video/mp4">
-          Your browser does not support the video tag.
         </video>
       </div>
       <div class="video-container">
         <h2 class="video-title">Walking man without ff</h2>
         <video controls autoplay loop>
           <source src="assets/man_walking_wo_ff.mp4" type="video/mp4">
-          Your browser does not support the video tag.
         </video>
       </div>
       <div class="video-container">
         <h2 class="video-title">Walking man with ff</h2>
         <video controls autoplay loop>
           <source src="assets/man_walking_w_ff.mp4" type="video/mp4">
-          Your browser does not support the video tag.
         </video>
       </div>
       <div class="video-container">
         <h2 class="video-title">Walking Man Original</h2>
         <video controls autoplay loop>
           <source src="assets/man_walking.mp4" type="video/mp4">
-          Your browser does not support the video tag.
         </video>
       </div>
     </div>
 
-    <div class="footer">
-      <h3>Contact Information</h3>
-      <p>Name: G Zachrisson</p>
-      <p>Email: gustafza@kth.se</p>
+    <div class="right-column">
+      <div class="description">
+        <p>Welcome to my GitHub page showcasing examples related to swarm algorithms and control systems.</p>
+      </div>
+
+      <div class="contact-info">
+        <h3>Contact Information:</h3>
+        <p>Name: G Zachrisson</p>
+        <p>Email: gustafza@kth.se</p>
+      </div>
     </div>
   </div>
+
 </body>
 
 </html>
