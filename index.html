@@ -59,32 +59,32 @@
       margin-top: 20px;
     }
 
-        /* Light Mode Styles */
+    /* Light Mode Styles */
     @media (prefers-color-scheme: light) {
       body {
         background-color: #f4f4f4;
         color: #333;
       }
-    
-      .video-container {
+
+      .grid-container {
         background-color: #f4f4f4;
       }
-    
+
       a.swarm-paper-link {
         color: #007bff; /* Typical blue */
       }
     }
-    
+
     /* Dark Mode Styles */
     @media (prefers-color-scheme: dark) {
       body {
         background-color: #0D1117;
       }
-    
-      .video-container {
+
+      .grid-container {
         background-color: #0D1117;
       }
-    
+
       a.swarm-paper-link {
         color: #D54740; /* Red */
       }
@@ -100,41 +100,26 @@
     <a href="assets/svarm.pdf" class="swarm-paper-link" style="font-size: 24px; margin-bottom: 20px;">Paper</a>
 
     <div class="grid-container">
-      <div class="video-container">
-        <h2>Gaussian without ff</h2>
-        <video controls autoplay loop>
-          <source src="assets/gaussian_wo_ff.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="video-container">
-        <h2>Gaussian with ff</h2>
-        <video controls autoplay loop>
-          <source src="assets/gaussian_w_ff.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="video-container">
-        <h2>Walking man without ff</h2>
-        <video controls autoplay loop>
-          <source src="assets/man_walking_wo_ff.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="video-container">
-        <h2>Walking man with ff</h2>
-        <video controls autoplay loop>
-          <source src="assets/man_walking_w_ff.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="video-container">
-        <h2>Walking Man Original</h2>
-        <video controls autoplay loop>
-          <source src="assets/man_walking.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
+      <video controls autoplay loop>
+        <source src="assets/gaussian_wo_ff.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <video controls autoplay loop>
+        <source src="assets/gaussian_w_ff.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <video controls autoplay loop>
+        <source src="assets/man_walking_wo_ff.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <video controls autoplay loop>
+        <source src="assets/man_walking_w_ff.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <video controls autoplay loop>
+        <source src="assets/man_walking.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </div>
 
     <div class="footer">
