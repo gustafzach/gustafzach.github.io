@@ -5,11 +5,10 @@
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js"></script>
   <title>G Zachrisson Test GitHub Website</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: "Helvetica Neue", Arial, sans-serif;
-      padding: 20px;
+      padding: 40px;
       color: #ddd;
       background-color: #f4f4f4;
       margin: 0;
@@ -25,10 +24,10 @@
       display: flex;
       flex-direction: row;
       justify-content: center;
-      margin-top: 30px;
-      margin-bottom: 30px;
-      margin-left: 20px;
-      margin-right: 20px;
+      margin-top: 60px; 
+      margin-bottom: 60px; 
+      margin-left: 60px;
+      margin-right: 60px;
     }
 
     .left-column {
@@ -37,20 +36,20 @@
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(3, auto);
       grid-gap: 0px;
-      max-width: 50%;
+      max-width: 50%; /* Adjust the width as desired */
     }
 
     .video-container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      border: 0px none #094D96;
+      border: 0px none #094D96; /* Adjust the border width */
       padding: 10px;
-      background-color: white;
+      background-color: white; /* Set the background color */
     }
 
     .video-title {
-      font-size: 22px;
+      font-size: 18px;
       margin-bottom: 10px;
       text-align: center;
     }
@@ -60,28 +59,29 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-left: 20px;
+      padding-left: 40px;
       text-align: center;
     }
-    
+
     .description {
       margin-bottom: 10px;
       text-align: justify;
       max-width: 70%;
       margin-left: auto;
       margin-right: auto;
-      font-size: 20px;
+      font-size: 18px;
     }
 
     .swarm-paper-link {
-      font-size: 18px;
-      color: #0D11CF;
-      text-decoration: underline;
+    font-size: 16px;
+    color: #0D11CF; /* Typical blue - light mode */
+    text-decoration: underline; /* Add underline to the link */
     }
 
     .contact-info {
       text-align: left;
-      font-size: 20px;
+      text-align: center;
+      font-size: 18px;
       margin-bottom: 10px;
       margin-top: 10px;
     }
@@ -93,14 +93,14 @@
         color: #333;
       }
       .video-title {
-        color: #0D1117;
+        color: #0D1117; /* Set the color to light-mode color */
       }
     }
 
     /* Dark Mode Styles */
     @media (prefers-color-scheme: dark) {
       .swarm-paper-link {
-        color: #E16F76;
+        color: #E16F76; /* Red - dark mode */
       }
     
       body {
@@ -108,7 +108,7 @@
         color: #ddd;
       }
       .video-title {
-        color: #0D1117;
+        color: #0D1117; /* Set the color to light-mode color */
       }
     }
   </style>
@@ -121,31 +121,31 @@
     <div class="left-column">
       <div class="video-container">
         <h3 class="video-title">Gaussian density without \( \boldsymbol{v}_{ff}\)</h3>
-        <video controls autoplay loop>
+        <video controls autoplay loop style="max-width: 100%; max-height: 100%;">
           <source src="assets/gaussian_wo_ff.mp4" type="video/mp4">
         </video>
       </div>
       <div class="video-container">
         <h3 class="video-title">Gaussian density with \( \boldsymbol{v}_{ff}\)</h3>
-        <video controls autoplay loop>
+        <video controls autoplay loop style="max-width: 100%; max-height: 100%;">
           <source src="assets/gaussian_w_ff.mp4" type="video/mp4">
         </video>
       </div>
       <div class="video-container">
         <h3 class="video-title">Man Walking without  \( \boldsymbol{v}_{ff}\)</h3>
-        <video controls autoplay loop>
+        <video controls autoplay loop style="max-width: 100%; max-height: 100%;">
           <source src="assets/man_walking_wo_ff.mp4" type="video/mp4">
         </video>
       </div>
       <div class="video-container">
         <h3 class="video-title">Man Walking with \( \boldsymbol{v}_{ff}\)</h3>
-        <video controls autoplay loop>
+        <video controls autoplay loop style="max-width: 100%; max-height: 100%;">
           <source src="assets/man_walking_w_ff.mp4" type="video/mp4">
         </video>
       </div>
       <div class="video-container">
         <h3 class="video-title">Man Walking - Original</h3>
-         <video controls autoplay loop>
+         <video controls autoplay loop style="max-width: 100%; max-height: 100%;">
           <source src="assets/man_walking.mp4" type="video/mp4">
         </video>
       </div>
@@ -155,12 +155,16 @@
 
     <div class="right-column">
       <div class="description">
-        <h4>Presenting the project outcomes from the course <em>Advanced Topics in Control</em> during the Spring semester of 2023 at ETH Zürich.</h4>
+        <p>
+          <h4>
+            <h4>Presenting the project outcomes from the course <em>Advanced Topics in Control</em> during the Spring semester of 2023 at ETH Zürich.</h4>
+          </h4>
+        </p>
       </div>
       <div class="description">
         <h4>Abstract</h4>
         <p>
-        The presented work examines the feasibility of coordinating a large-scale multi-agent system according to a time-varying probability density function using nature-inspired control techniques. The proposed method works in a decentralized manner where only information about neighboring agents' positions is required. The information is then used to estimate the local density, which is further used to generate a velocity command. Building upon previous work, a feedback law based on the heat equation is extended by a feed-forward term based on the continuity equation. This accommodates a velocity field driving the agents towards the desired time-varying spatial density. We demonstrate how the proposed technique can be used to track both simple and complex time-varying densities. The proposed control law is tested in a simulation to verify its performance.
+        The presented work examines the feasibility of coordinating a large-scale multi-agent system according to a time-varying probability density function using nature-inspired control techniques. The proposed method works in a decentralized manner where only information about neighboring agents positions are required. The information is then used to estimate the local density which further is used to generate a velocity command. Building upon previous work, a feedback law based on heat equation is extended by a feed-forward term based on the continuity equation. This accommodates a velocity field driving the agents towards the desired time-varying spatial density. We show how the proposed technique can be used to track both simple and complex time-varying densities. The proposed control law is tested in a simulation to verify its performance.        </p>
         </p>
       </div>
       <div class="contact-info">
