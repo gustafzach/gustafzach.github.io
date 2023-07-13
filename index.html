@@ -5,9 +5,10 @@
   <title>My Professional GitHub Page</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: "Helvetica Neue", Arial, sans-serif;
       padding: 40px;
       color: #ddd;
+      background-color: #000;
     }
 
     h1 {
@@ -45,8 +46,7 @@
       justify-content: center;
       align-items: center;
       padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      background-color: #000;
     }
 
     video {
@@ -67,7 +67,11 @@
       }
 
       .video-container {
-        background-color: #222;
+        background-color: #000;
+      }
+
+      a {
+        color: #ff91a4; /* Salmon Pink */
       }
     }
 
@@ -79,7 +83,7 @@
       }
 
       .video-container {
-        background-color: #fff;
+        background-color: #f4f4f4;
       }
     }
   </style>
@@ -88,7 +92,7 @@
 <body>
   <div class="container">
     <h1>Time-Varying Density Control for Large-Scale Multi-Agent Systems Using Heat and Continuity Equation</h1>
-    <a href="assets/svarm.pdf">Paper</a>
+    <p>Welcome to my GitHub page showcasing examples related to swarm algorithms and control systems.</p>
 
     <div class="grid-container">
       <div class="video-container">
@@ -115,7 +119,15 @@
           <source src="assets/man_walking_w_ff.mp4" type="video/mp4">
         </video>
       </div>
+      <div class="video-container">
+        <h2>Walking Man Original2</h2>
+        <video controls autoplay loop>
+          <source src="assets/man_walking.mp4" type="video/mp4">
+        </video>
+      </div>
     </div>
+
+    <a href="assets/svarm.pdf" style="font-size: 24px; margin-top: 20px;">Paper</a>
 
     <div class="footer">
       <h3>Contact Information:</h3>
