@@ -26,23 +26,11 @@
 
     .left-column {
       flex: 1;
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, auto);
+      grid-gap: 15px;
       max-width: 50%; /* Adjust the width as desired */
-    }
-    
-    .top-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 20px;
-      max-width: 100%; /* Allow the top grid to expand within the left column */
-    }
-    
-    .bottom-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-gap: 20px;
-      max-width: 100%; /* Allow the bottom grid to expand within the left column */
     }
 
     .video-container {
@@ -75,7 +63,7 @@
 
     .swarm-paper-link {
     font-size: 16px;
-    color: #0D11CF; /* Typical blue - light mode */
+    color: #007bff; /* Typical blue - light mode */
     text-decoration: none;
     }
 
@@ -98,7 +86,7 @@
       }
     
       body {
-        background-color: #0D1117;
+        background-color: #34352F;
         color: #ddd;
       }
     }
@@ -110,42 +98,36 @@
 
   <div class="container">
     <div class="left-column">
-  <div class="top-grid">
-    <div class="video-container">
-      <h2 class="video-title">Gaussian without ff</h2>
-      <video controls autoplay loop style="max-width: 100%; max-height: 100%;">
-        <source src="assets/gaussian_wo_ff.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="video-container">
-      <h2 class="video-title">Gaussian with ff</h2>
-      <video controls autoplay loop style="max-width: 100%; max-height: 100%;">
-        <source src="assets/gaussian_w_ff.mp4" type="video/mp4">
-      </video>
-    </div>
-  </div>
-  <div class="bottom-grid">
-    <div class="video-container">
-      <h2 class="video-title">Walking man without ff</h2>
-      <video controls autoplay loop style="max-width: 100%; max-height: 100%;">
-        <source src="assets/man_walking_wo_ff.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="video-container">
-      <h2 class="video-title">Walking man with ff</h2>
-      <video controls autoplay loop style="max-width: 100%; max-height: 100%;">
-        <source src="assets/man_walking_w_ff.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="video-container">
-      <h2 class="video-title">Walking Man Original</h2>
-      <video controls autoplay loop style="max-width: 100%; max-height: 100%;">
-        <source src="assets/man_walking.mp4" type="video/mp4">
-      </video>
-    </div>
-  </div>
-</div>
-
+      <div class="video-container">
+        <h2 class="video-title">Gaussian without ff</h2>
+        <video controls autoplay loop style="max-width: 100%; max-height: 100%;">
+          <source src="assets/gaussian_wo_ff.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-container">
+        <h2 class="video-title">Gaussian with ff</h2>
+        <video controls autoplay loop style="max-width: 100%; max-height: 100%;">
+          <source src="assets/gaussian_w_ff.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-container">
+        <h2 class="video-title">Walking man without ff</h2>
+        <video controls autoplay loop style="max-width: 100%; max-height: 100%;">
+          <source src="assets/man_walking_wo_ff.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-container">
+        <h2 class="video-title">Walking man with ff</h2>
+        <video controls autoplay loop style="max-width: 100%; max-height: 100%;">
+          <source src="assets/man_walking_w_ff.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-container">
+        <h2 class="video-title">Walking Man Original</h2>
+        <video controls autoplay loop style="max-width: 100%; max-height: 60%;">
+          <source src="assets/man_walking.mp4" type="video/mp4">
+        </video>
+      </div>
     </div>
 
     <div class="right-column">
