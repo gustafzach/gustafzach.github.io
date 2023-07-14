@@ -46,15 +46,19 @@
     .description {
       margin-bottom: 10px;
       text-align: justify;
-      max-width: 90%;
+      max-width: 100%; /* Adjust the value as needed */
       margin-left: auto;
       margin-right: auto;
       font-size: 18px;
       display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
     }
-
+    
     .column {
       flex: 1;
+      display: inline-flex; /* Add this line */
+      align-items: center; /* Add this line */
     }
 
     .date {
