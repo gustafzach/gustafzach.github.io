@@ -24,8 +24,8 @@
       display: flex;
       flex-direction: row;
       justify-content: center;
-      margin-top: 60px; 
-      margin-bottom: 60px; 
+      margin-top: 60px;
+      margin-bottom: 60px;
       margin-left: 60px;
       margin-right: 60px;
     }
@@ -61,9 +61,9 @@
     }
 
     .swarm-paper-link {
-    font-size: 16px;
-    color: #0D11CF; /* Typical blue - light mode */
-    text-decoration: underline; /* Add underline to the link */
+      font-size: 16px;
+      color: #0D11CF; /* Typical blue - light mode */
+      text-decoration: underline; /* Add underline to the link */
     }
 
     /* Visited link styles */
@@ -88,8 +88,79 @@
         color: #E16F76; /* Red - dark mode */
       }
       a:visited {
-      color: #E16F76; /* Set the color for visited links in dark mode */
+        color: #E16F76; /* Set the color for visited links in dark mode */
+      }
     }
+
+    /* Toggle Switch Styles */
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 20px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    input:checked + .toggle-slider {
+      background-color: #2196F3;
+    }
+
+    input:focus + .toggle-slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .toggle-slider:before {
+      -webkit-transform: translateX(20px);
+      -ms-transform: translateX(20px);
+      transform: translateX(20px);
+    }
+
+    /* Dark Mode specific styles */
+    input:checked + .toggle-slider:before {
+      background-color: #0D1117;
+    }
+
+    /* Light Mode specific styles */
+    @media (prefers-color-scheme: light) {
+      .toggle-switch {
+        margin-left: auto;
+      }
+    }
+
+    /* Dark Mode specific styles */
+    @media (prefers-color-scheme: dark) {
+      .toggle-switch {
+        margin-right: auto;
+      }
     }
   </style>
 </head>
@@ -97,17 +168,25 @@
 <body>
   <h1>GZ</h1>
 
+  <!-- Toggle Switch for Dark/Light Mode -->
+  <div class="toggle-switch">
+    <input type="checkbox" id="mode-toggle" onchange="toggleMode()" />
+    <span class="toggle-slider"></span>
+  </div>
+
   <div class="container">
     <div class="left-column">
-       <img src="assets/my_image.jpeg" style="max-width: 100%; height: auto;">
+      <img src="assets/my_image.jpeg" style="max-width: 100%; height: auto;">
     </div>
 
     <div class="right-column">
-      <div class="contact-info"> <h4>Works</h4> </div>
+      <div class="contact-info">
+        <h4>Works</h4>
+      </div>
       <div class="description">
-          <p><a href="https://gustafzach.github.io/atic">ATIC Project</a></p>
-          <p><a href="https://gustafzach.github.io/atic">ICT4S Conference Paper</a></p>
-          <p><a href="https://gustafzach.github.io/atic">BSc Thesis</a></p>
+        <p><a href="https://gustafzach.github.io/atic">ATIC Project</a></p>
+        <p><a href="https://gustafzach.github.io/atic">ICT4S Conference Paper</a></p>
+        <p><a href="https://gustafzach.github.io/atic">BSc Thesis</a></p>
       </div>
       <div class="contact-info">
         <h4>Contact</h4>
@@ -115,6 +194,13 @@
       </div>
     </div>
   </div>
+
+  <script>
+    function toggleMode() {
+      var body = document.body;
+      body.classList.toggle("dark-mode");
+    }
+  </script>
 
 </body>
 
