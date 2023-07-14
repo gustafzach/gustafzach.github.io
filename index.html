@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js"></script>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GZ</title>
   <style>
     body {
@@ -210,8 +211,13 @@
       var body = document.body;
       var toggleSlider = document.getElementById("toggle-slider");
 
-      body.classList.toggle("dark-mode");
-      toggleSlider.classList.toggle("toggle-slider-active");
+      if (body.getAttribute("data-theme") === "dark") {
+        body.removeAttribute("data-theme");
+        toggleSlider.classList.remove("toggle-slider-active");
+      } else {
+        body.setAttribute("data-theme", "dark");
+        toggleSlider.classList.add("toggle-slider-active");
+      }
     }
   </script>
 
