@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js"></script>
+  <title>GZ ATIC</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      padding: 40px;
+      color: #ddd;
+      background-color: #f4f4f4;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 25px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 60px; 
+      margin-bottom: 60px; 
+      margin-left: 60px;
+      margin-right: 60px;
+    }
+
+    .left-column {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, auto);
+      grid-gap: 0px;
+      max-width: 50%; /* Adjust the width as desired */
+    }
+
+    .video-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 0px none #094D96; /* Adjust the border width */
+      padding: 10px;
+      background-color: white; /* Set the background color */
+    }
+
+    .video-title {
+      font-size: 18px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .right-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-left: 40px;
+      text-align: center;
+    }
+
+    .description {
+      margin-bottom: 10px;
+      text-align: left;
+      max-width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 18px;
+    }
+
+    .swarm-paper-link {
+    font-size: 16px;
+    color: #0D11CF; /* Typical blue - light mode */
+    text-decoration: underline; /* Add underline to the link */
+    }
+
+    .title-link {
+    font-size: 25px;
+    color: #0D11CF; /* Typical blue - light mode */
+    text-decoration: underline; /* Add underline to the link */
+    }
+
+    .contact-info {
+      text-align: left;
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+
+    /* Visited link styles */
+    a:visited {
+      color: #0D11CF; /* Set the desired color for visited links */
+    }
+
+    /* Light Mode Styles */
+    @media (prefers-color-scheme: light) {
+      body {
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      .video-title {
+        color: #0D1117; /* Set the color to light-mode color */
+      }
+    }
+
+    /* Dark Mode Styles */
+    @media (prefers-color-scheme: dark) {
+      .swarm-paper-link {
+        color: #E16F76; /* Red - dark mode */
+      }
+      .title-link {
+        color: #E16F76; /* Red - dark mode */
+      }
+    
+      body {
+        background-color: #0D1117;
+        color: #ddd;
+      }
+      .video-title {
+        color: #0D1117; /* Set the color to light-mode color */
+      }
+      a:visited {
+      color: #E16F76; /* Set the color for visited links in dark mode */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1> <a href="https://gustafzach.github.io/" class="title-link">GZ</a> </h1> 
+  <h1>Towards considering Planetary Boundaries in Life Cycle Assessments of ICT</h1>
+
+  <div class="container">
+    <div class="left-column">
+     
+    </div>
+
+    <div class="right-column">
+      <div class="description">
+        <p>
+          <h4>
+            <h4>Outcome of summer internship project at Ericsson Research in sustainability. Paper accepted and presented at the 8th International Conference on ICT for Sustainability (ICT4S 2022). </h4>
+          </h4>
+        </p>
+      </div>
+      <div class="contact-info">  <h4>Abstract</h4> </div>
+      <div class="description">
+        <p>
+          Realizing the need for establishing a better understanding of the impacts of Information and Communication Technologies (ICT) in relation to critical Earth System Processes, this paper provides an early exploration of how Life Cycle Assessment (LCA) of ICT would need to develop to consider the Planetary Boundaries framework [1]. Based on identification of LCA impact categories and indicators, and earlier attempts to integrate the Planetary Boundaries framework into LCA, the study aims to identify a plausible way forward. Impact category indicators with some similarity in scope to the Planetary Boundaries’ control variables are identified based on the investigated life cycle impact assessment frameworks and a ranking is performed based on relevance. 
+        </p>
+        <p>
+          Moreover, it is explored how ICT LCA models and data would need to adjust to consider the Planetary Boundaries framework.The study concludes that integration of the Planetary Boundaries framework into LCA of ICT seems highly challenging. Not least, the development of a mature Planetary Boundaries life cycle impact assessment method will need considerable time and effort. It also concludes that once a method is available it will be complementary to traditional LCA approaches rather than replacing them. 
+        </p>
+        <p>
+          Moving forward the study sees two main steps: alignment of impact categories and establishment of granular Safe Operating Spaces needed to assess the absolute environmental sustainability of products. LCA practitioners in the ICT sector can prepare for this process by collecting spatially and temporally granular data and reflect this in their LCA models – a development that would also benefit the accuracy of traditional LCA. The practitioners may also prepare future use of PB-LCA by selecting functional units like ‘per subscription and year’ and LCIA indicators that somehow match Earth System Process control variables from a scope perspective (such as ReCiPe and ILCD indicators).
+        </p>
+      </div>
+      <div class="contact-info">
+        <a href="https://doi.org/10.1109/ICT4S55073.2022.00024" class="swarm-paper-link">Full Paper</a>
+      </div>
+      <div class="contact-info">
+        <h4>Contact</h4>
+        <p>Gustaf Zachrisson<br><a href="mailto:gustafza@kth.se" class="swarm-paper-link">gustafza@kth.se</a></p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
