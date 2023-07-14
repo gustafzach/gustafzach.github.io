@@ -78,6 +78,7 @@
         color: #333;
       }
     }
+
     /* Dark Mode Styles */
     @media (prefers-color-scheme: dark) {
       body {
@@ -162,6 +163,15 @@
         margin-right: auto;
       }
     }
+
+    /* Toggle Switch Animation */
+    .toggle-slider-active {
+      background-color: #2196F3;
+    }
+
+    .toggle-slider-active:before {
+      transform: translateX(20px);
+    }
   </style>
 </head>
 
@@ -171,7 +181,7 @@
   <!-- Toggle Switch for Dark/Light Mode -->
   <div class="toggle-switch">
     <input type="checkbox" id="mode-toggle" onchange="toggleMode()" />
-    <span class="toggle-slider"></span>
+    <span class="toggle-slider" id="toggle-slider"></span>
   </div>
 
   <div class="container">
@@ -198,7 +208,10 @@
   <script>
     function toggleMode() {
       var body = document.body;
+      var toggleSlider = document.getElementById("toggle-slider");
+
       body.classList.toggle("dark-mode");
+      toggleSlider.classList.toggle("toggle-slider-active");
     }
   </script>
 
