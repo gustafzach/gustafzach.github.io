@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js"></script>
+  <title>GZ ATIC</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      padding: 40px;
+      color: #ddd;
+      background-color: #f4f4f4;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 25px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 60px; 
+      margin-bottom: 60px; 
+      margin-left: 60px;
+      margin-right: 60px;
+    }
+
+    .left-column {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, auto);
+      grid-gap: 0px;
+      max-width: 50%; /* Adjust the width as desired */
+    }
+
+    .video-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 0px none #094D96; /* Adjust the border width */
+      padding: 10px;
+      background-color: white; /* Set the background color */
+    }
+
+    .video-title {
+      font-size: 18px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .right-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-left: 40px;
+      text-align: center;
+    }
+
+    .description {
+      margin-bottom: 10px;
+      text-align: left;
+      max-width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 18px;
+    }
+
+    .swarm-paper-link {
+    font-size: 16px;
+    color: #FF8D02; /* Typical blue - light mode */
+    text-decoration: underline; /* Add underline to the link */
+    }
+
+    .title-link {
+    font-size: 25px;
+    color: #FF8D02; /* Typical blue - light mode */
+    text-decoration: underline; /* Add underline to the link */
+    }
+
+    .contact-info {
+      text-align: left;
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+
+    /* Visited link styles */
+    a:visited {
+      color: #FF8D02; /* Set the desired color for visited links */
+    }
+
+    /* Light Mode Styles */
+    @media (prefers-color-scheme: light) {
+      body {
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      .video-title {
+        color: #0D1117; /* Set the color to light-mode color */
+      }
+    }
+
+    /* Dark Mode Styles */
+    @media (prefers-color-scheme: dark) {
+      .swarm-paper-link {
+        color: #E16F76; /* Red - dark mode */
+      }
+      .title-link {
+        color: #E16F76; /* Red - dark mode */
+      }
+    
+      body {
+        background-color: #0D1117;
+        color: #ddd;
+      }
+      .video-title {
+        color: #0D1117; /* Set the color to light-mode color */
+      }
+      a:visited {
+      color: #E16F76; /* Set the color for visited links in dark mode */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1> <a href="https://gustafzach.github.io/" class="title-link">GZ</a> </h1> 
+  <h1>Nordic Youth Position Paper on Biodiversity</h1>
+
+  <div class="container">
+    <div class="left-column">
+     
+    </div>
+
+    <div class="right-column">
+      <div class="description">
+        <p>
+          <h4>
+            <h4>
+            Coordinated and co-wrote a Nordic Youth Position Paper on Biodiversity based on opinions from 2300 Nordic youth. Results presented to Nordic politicians and environmental ministers. Nominated as Young Environmental Hero of the Year 2020 by WWF Sweden. 
+            </h4>
+        </p>
+      </div>
+      <div class="description">
+        <p>
+          The paper and its statistics are based on data and opinions collected from January 2020 to March 2021, through youth actions conducted as part of a project on youth engagement in biodiversity and the UN CBD by the Nordic Council of Ministers and Nordic Council. The actions include youth workshops in Denmark, Finland (with participants from the Åland Islands), Sweden, Iceland, Greenland, the Faroe Islands and Sápmi, as well as an online survey with over 2,200 youth respondents from all of the Nordic countries and autonomous areas.
+        </p>
+        <p>
+          This paper presents views and recommendations from the consulted Nordic youth regarding involvement, adequate education, fair transformation, ecological footprint, responsible production, and the upcoming Global Biodiversity Framework. 
+        </p>
+      </div>
+      <div class="contact-info">
+        <a href="https://pub.norden.org/nord2021-038/#" class="swarm-paper-link">Read online</a>
+        <span class="spacing">&nbsp;&nbsp;</span>
+        <a href="https://urn.kb.se/resolve?urn=urn:nbn:se:norden:org:diva-12116" class="swarm-paper-link">Publication</a>
+      </div>
+      <div class="contact-info">
+        <h4>Contact</h4>
+        <p>Gustaf Zachrisson<br><a href="mailto:gustafza@kth.se" class="swarm-paper-link">gustafza@kth.se</a></p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
