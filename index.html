@@ -179,6 +179,17 @@
     .toggle-slider-active:before {
       transform: translateX(20px);
     }
+
+    /* Canvas styling to match the original image size */
+    #waveCanvas {
+      max-width: 100%;
+      height: auto;
+      /* Set a fixed height or let the parent container define it.
+         For example, you can try a fixed height: */
+      width: 100%;
+      height: 400px;
+      display: block;
+    }
   </style>
 </head>
 
@@ -186,7 +197,8 @@
   <h1>GZ</h1>
   <div class="container">
     <div class="left-column">
-      <img src="assets/my_image.jpeg" style="max-width: 100%; height: auto;">
+      <!-- Replace the static image with a canvas for dynamic waves -->
+      <canvas id="waveCanvas"></canvas>
     </div>
 
     <div class="right-column">
@@ -223,15 +235,67 @@
   </div>
 
   <script>
-    function toggleMode() {
-      var body = document.body;
-      var toggleSlider = document.getElementById("toggle-slider");
+    // Basic animated wave using canvas
+    const canvas = document.getElementById('waveCanvas');
+    const ctx = canvas.getContext('2d');
 
-      body.classList.toggle("dark-mode");
-      toggleSlider.classList.toggle("toggle-slider-active");
+    let wavePhase = 0;
+    let waveAmplitude = 20; // Default amplitude
+    let waveFrequency = 0.02; // How frequent the waves are
+
+    function resizeCanvas() {
+      // Match canvas size to its displayed size
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
     }
-  </script>
 
+    function drawWave() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.beginPath();
+      // Start at left side
+      ctx.moveTo(0, canvas.height / 2);
+
+      // Draw a sine wave across the width
+      for (let x = 0; x <= canvas.width; x++) {
+        let y = (canvas.height / 2) + waveAmplitude * Math.sin(x * waveFrequency + wavePhase);
+        ctx.lineTo(x, y);
+      }
+
+      // Create a gradient that goes from left to right
+      let gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      gradient.addColorStop(0, '#00008B');  // Dark Blue
+      gradient.addColorStop(1, '#1E90FF');  // DodgerBlue
+
+      ctx.strokeStyle = gradient;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+
+    function animate() {
+      wavePhase += 0.03; // Speed of the wave's horizontal motion
+      drawWave();
+      requestAnimationFrame(animate);
+    }
+
+    // Increase amplitude on hover
+    canvas.addEventListener('mouseenter', () => {
+      waveAmplitude = 40; // Bigger waves on hover
+    });
+
+    // Return to normal amplitude when mouse leaves
+    canvas.addEventListener('mouseleave', () => {
+      waveAmplitude = 20;
+    });
+
+    // Handle resizing
+    window.addEventListener('load', () => {
+      resizeCanvas();
+      animate();
+    });
+
+    window.addEventListener('resize', resizeCanvas);
+  </script>
 </body>
 
 </html>
