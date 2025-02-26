@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Static Weave Waves</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js"></script>
+  <title>GZ</title>
   <style>
     body {
       font-family: "Helvetica Neue", Arial, sans-serif;
@@ -10,46 +13,247 @@
       background-color: #f4f4f4;
       margin: 0;
     }
+
+    h1 {
+      font-size: 25px;
+      text-align: center;
+      margin-bottom: 110px;
+    }
+
+    .transparent-h1 {
+      font-size: 25px;
+      text-align: center;
+      margin-bottom: 20px;
+      color: transparent;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 60px;
+      margin-bottom: 60px;
+      margin-left: 60px;
+      margin-right: 60px;
+    }
+
+    .left-column {
+      flex: 1;
+    }
+
+    .right-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-left: 40px;
+      text-align: center;
+    }
+
+    .description {
+      margin-bottom: 10px;
+      text-align: justify;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 18px;
+    }
+
+    .contact-info {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+
+    .swarm-paper-link {
+      font-size: 16px;
+      color: #FF8D02; /* Typical blue - light mode */
+      text-decoration: underline;
+    }
+
+    /* Visited link styles */
+    a:visited {
+      color: #FF8D02;
+    }
+
+    /* Light Mode Styles */
+    @media (prefers-color-scheme: light) {
+      body {
+        background-color: #f4f4f4;
+        color: #333;
+      }
+    }
+
+    /* Dark Mode Styles */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #0D1117;
+        color: #ddd;
+      }
+      .swarm-paper-link {
+        color: #E16F76;
+      }
+      a:visited {
+        color: #E16F76;
+      }
+    }
+
+    /* Toggle Switch Styles */
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 20px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+    }
+
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      transition: .4s;
+    }
+
+    input:checked + .toggle-slider {
+      background-color: #2196F3;
+    }
+
+    input:focus + .toggle-slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .toggle-slider:before {
+      transform: translateX(20px);
+    }
+
+    /* Dark Mode specific styles */
+    input:checked + .toggle-slider:before {
+      background-color: #0D1117;
+    }
+
+    /* Light Mode specific styles */
+    @media (prefers-color-scheme: light) {
+      .toggle-switch {
+        margin-left: auto;
+      }
+    }
+
+    /* Dark Mode specific styles */
+    @media (prefers-color-scheme: dark) {
+      .toggle-switch {
+        margin-right: auto;
+      }
+    }
+
+    /* Toggle Switch Animation */
+    .toggle-slider-active {
+      background-color: #2196F3;
+    }
+
+    .toggle-slider-active:before {
+      transform: translateX(20px);
+    }
+
+    /* Canvas styling to mimic the original image size */
     #waveCanvas {
       max-width: 100%;
       height: auto;
       width: 100%;
-      height: 400px; /* Adjust as needed */
+      height: 400px;
       display: block;
     }
   </style>
 </head>
+
 <body>
-  <canvas id="waveCanvas"></canvas>
+  <h1>GZ</h1>
+  <div class="container">
+    <div class="left-column">
+      <!-- Dynamic canvas element with static, dense waves and a rug push effect -->
+      <canvas id="waveCanvas"></canvas>
+    </div>
+
+    <div class="right-column">
+      <div class="contact-info">
+        <h4>Work</h4>
+      </div>
+      <div class="description">
+        <p>
+          <span class="date">June 2023</span>
+          <span class="spacing">&nbsp;&nbsp;</span>
+          <a href="https://gustafzach.github.io/atic" class="swarm-paper-link">ATIC Project</a>
+        </p>
+        <p>
+          <span class="date">Sept 2022</span>
+          <span class="spacing">&nbsp;&nbsp;</span>
+          <a href="https://gustafzach.github.io/bscthesis" class="swarm-paper-link">BSc Thesis</a>
+        </p>
+        <p>
+          <span class="date">June 2022</span>
+          <span class="spacing">&nbsp;&nbsp;</span>
+          <a href="https://gustafzach.github.io/ict4s" class="swarm-paper-link">ICT4S Conference Paper</a>
+        </p>
+        <p>
+          <span class="date">June 2021</span>
+          <span class="spacing">&nbsp;&nbsp;</span>
+          <a href="https://gustafzach.github.io/biodiversity" class="swarm-paper-link">Nordic Youth Position Paper on Biodiversity</a>
+        </p>
+      </div>
+      <div class="contact-info">
+        <h4>Contact</h4>
+        <p>Gustaf Zachrisson<br><a href="mailto:zachgustaf@gmail.com" class="swarm-paper-link">zachgustaf@gmail.com</a></p>
+      </div>
+    </div>
+  </div>
 
   <script>
     const canvas = document.getElementById('waveCanvas');
     const ctx = canvas.getContext('2d');
 
-    // Wave parameters
-    const wavePhase = 0;            // Keeping it constant for a "static" look
-    const waveFrequency = 0.02;       // Horizontal wave frequency
-    const waveAmplitude = 20;         // Base wave amplitude
-    const lineCount = 50;             // Increased number of wave lines for a denser look
-    const lineSpacing = 8;            // Reduced spacing for more lines per canvas height
+    // Wave parameters for static waves
+    const wavePhase = 0;          // Constant phase for a static look
+    const waveFrequency = 0.02;     // Horizontal frequency of the sine waves
+    const waveAmplitude = 20;       // Base amplitude of each wave line
+    const lineCount = 50;           // More lines for a denser, woven pattern
+    const lineSpacing = 8;          // Reduced spacing for a tighter look
 
     // "Rug push" effect parameters
-    const pushRadius = 120;           // Radius of the 'force' effect
-    const pushStrength = 40;          // Strength of the push
+    const pushRadius = 120;         // Radius of the effect around the mouse
+    const pushStrength = 40;        // How strongly the waves are pushed
     let mouseX = -9999, mouseY = -9999; // Start off-canvas
 
-    // Resize canvas to fit its displayed size
+    // Resize canvas to match its displayed size
     function resizeCanvas() {
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
     }
 
-    // Calculate extra vertical offset if the mouse is near a point
+    // Compute vertical offset based on proximity to the mouse pointer
     function getPushOffset(x, y) {
       const dx = x - mouseX;
       const dy = y - mouseY;
       const dist = Math.sqrt(dx * dx + dy * dy);
-
       if (dist < pushRadius) {
         const force = (pushRadius - dist) / pushRadius;
         return -force * pushStrength;
@@ -57,33 +261,28 @@
       return 0;
     }
 
-    // Draw multiple, static wave lines with the push effect
+    // Draw multiple static wave lines with the interactive push effect
     function drawWaves() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Create a gradient reminiscent of an electric/dynamic color palette
+      // Create a gradient reminiscent of the desired electric/dynamic look
       const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      gradient.addColorStop(0,   '#013a63');  // Dark Blue
-      gradient.addColorStop(0.3, '#fa4514');  // Vibrant Orange
-      gradient.addColorStop(0.6, '#2f70b1');  // Mid-tone Blue
-      gradient.addColorStop(1,   '#ff4100');  // Orange
+      gradient.addColorStop(0, '#013a63');   // Dark Blue
+      gradient.addColorStop(0.3, '#fa4514');   // Vibrant Orange
+      gradient.addColorStop(0.6, '#2f70b1');   // Mid-tone Blue
+      gradient.addColorStop(1, '#ff4100');   // Orange
 
       ctx.strokeStyle = gradient;
       ctx.lineWidth = 2;
 
-      // Draw each line in a loop
       for (let i = 0; i < lineCount; i++) {
         ctx.beginPath();
-        // Offset each line vertically, centering the pattern
+        // Calculate a vertical offset for each line to center the pattern
         const lineOffset = (i - lineCount / 2) * lineSpacing;
-
         for (let x = 0; x <= canvas.width; x++) {
           const baseY = canvas.height / 2 + lineOffset;
-          // Use the same static phase for every frame, with a per-line offset for variation
           let y = baseY + waveAmplitude * Math.sin(x * waveFrequency + wavePhase + i);
-          // Add the "push" offset from mouse interaction
           y += getPushOffset(x, baseY);
-
           if (x === 0) {
             ctx.moveTo(x, y);
           } else {
@@ -94,27 +293,23 @@
       }
     }
 
-    // Animation loop – even though the waves are static, we continuously redraw
-    // so that the push effect is responsive.
     function animate() {
       drawWaves();
       requestAnimationFrame(animate);
     }
 
-    // Track mouse movement for "pushing" effect
+    // Update mouse coordinates for the "rug push" effect
     canvas.addEventListener('mousemove', (e) => {
       const rect = canvas.getBoundingClientRect();
       mouseX = e.clientX - rect.left;
       mouseY = e.clientY - rect.top;
     });
 
-    // Reset mouse position when it leaves the canvas
     canvas.addEventListener('mouseleave', () => {
       mouseX = -9999;
       mouseY = -9999;
     });
 
-    // Initialize
     window.addEventListener('load', () => {
       resizeCanvas();
       animate();
@@ -122,4 +317,5 @@
     window.addEventListener('resize', resizeCanvas);
   </script>
 </body>
+
 </html>
