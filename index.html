@@ -184,10 +184,8 @@
     #waveCanvas {
       max-width: 100%;
       height: auto;
-      /* Set a fixed height or let the parent container define it.
-         For example, you can try a fixed height: */
       width: 100%;
-      height: 400px;
+      height: 400px; /* Adjust as needed */
       display: block;
     }
   </style>
@@ -197,7 +195,7 @@
   <h1>GZ</h1>
   <div class="container">
     <div class="left-column">
-      <!-- Replace the static image with a canvas for dynamic waves -->
+      <!-- Dynamic canvas instead of a static image -->
       <canvas id="waveCanvas"></canvas>
     </div>
 
@@ -235,65 +233,112 @@
   </div>
 
   <script>
-    // Basic animated wave using canvas
     const canvas = document.getElementById('waveCanvas');
     const ctx = canvas.getContext('2d');
 
-    let wavePhase = 0;
-    let waveAmplitude = 20; // Default amplitude
-    let waveFrequency = 0.02; // How frequent the waves are
+    // Wave parameters
+    let wavePhase = 0;            // Animation phase
+    const waveFrequency = 0.02;   // Horizontal wave frequency
+    const waveAmplitude = 20;     // Base wave amplitude
+    const lineCount = 25;         // Number of wave lines
+    const lineSpacing = 15;       // Vertical spacing between wave lines
 
+    // "Rug push" effect parameters
+    const pushRadius = 120;       // Radius of the 'force' effect
+    const pushStrength = 40;      // Strength of the push
+    let mouseX = -9999, mouseY = -9999; // Start off-canvas
+
+    // Resize canvas to fit its displayed size
     function resizeCanvas() {
-      // Match canvas size to its displayed size
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
     }
 
-    function drawWave() {
+    // Calculate extra vertical offset if the mouse is near a point
+    function getPushOffset(x, y) {
+      const dx = x - mouseX;
+      const dy = y - mouseY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < pushRadius) {
+        // The closer to the mouse, the bigger the effect
+        const force = (pushRadius - dist) / pushRadius;
+        // Return negative if you want a "dip" under the mouse,
+        // or positive if you want it to bulge upwards
+        return -force * pushStrength;
+      }
+      return 0;
+    }
+
+    // Draw multiple wave lines
+    function drawWaves() {
+      // Clear the entire canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      ctx.beginPath();
-      // Start at left side
-      ctx.moveTo(0, canvas.height / 2);
-
-      // Draw a sine wave across the width
-      for (let x = 0; x <= canvas.width; x++) {
-        let y = (canvas.height / 2) + waveAmplitude * Math.sin(x * waveFrequency + wavePhase);
-        ctx.lineTo(x, y);
-      }
-
-      // Create a gradient that goes from left to right
-      let gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      gradient.addColorStop(0, '#00008B');  // Dark Blue
-      gradient.addColorStop(1, '#1E90FF');  // DodgerBlue
+      // Create a multi-stop gradient reminiscent of the attached image’s color scheme
+      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      gradient.addColorStop(0,   '#013a63');  // Dark Blue
+      gradient.addColorStop(0.3, '#fa4514');  // Vibrant Orange
+      gradient.addColorStop(0.6, '#2f70b1');  // Mid-tone Blue
+      gradient.addColorStop(1,   '#ff4100');  // Another orange-ish tone
 
       ctx.strokeStyle = gradient;
       ctx.lineWidth = 2;
-      ctx.stroke();
+
+      // Draw each line in a loop
+      for (let i = 0; i < lineCount; i++) {
+        ctx.beginPath();
+
+        // We'll offset each line vertically
+        // so they stack above/below the canvas center
+        const lineOffset = (i - lineCount / 2) * lineSpacing;
+
+        for (let x = 0; x <= canvas.width; x++) {
+          // Base y position for this line (center + offset)
+          const baseY = canvas.height / 2 + lineOffset;
+
+          // Add a sine wave
+          let y = baseY + waveAmplitude * Math.sin(x * waveFrequency + wavePhase + i);
+
+          // Add the "push" offset from mouse interaction
+          y += getPushOffset(x, baseY);
+
+          if (x === 0) {
+            ctx.moveTo(x, y);
+          } else {
+            ctx.lineTo(x, y);
+          }
+        }
+
+        ctx.stroke();
+      }
     }
 
+    // Animation loop
     function animate() {
-      wavePhase += 0.03; // Speed of the wave's horizontal motion
-      drawWave();
+      wavePhase += 0.02; // Increase to make waves move faster horizontally
+      drawWaves();
       requestAnimationFrame(animate);
     }
 
-    // Increase amplitude on hover
-    canvas.addEventListener('mouseenter', () => {
-      waveAmplitude = 40; // Bigger waves on hover
+    // Track mouse movement for "pushing" effect
+    canvas.addEventListener('mousemove', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
     });
 
-    // Return to normal amplitude when mouse leaves
+    // If mouse leaves canvas, move it far away so no effect
     canvas.addEventListener('mouseleave', () => {
-      waveAmplitude = 20;
+      mouseX = -9999;
+      mouseY = -9999;
     });
 
-    // Handle resizing
+    // Initialize
     window.addEventListener('load', () => {
       resizeCanvas();
       animate();
     });
-
     window.addEventListener('resize', resizeCanvas);
   </script>
 </body>
