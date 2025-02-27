@@ -2,94 +2,140 @@
 <html>
 
 <head>
+  <!-- Load a modern Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" 
+    rel="stylesheet"
+  >
+
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js"></script>
+  <script 
+    id="MathJax-script" 
+    async 
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js">
+  </script>
+
   <title>GZ</title>
+
   <style>
+    /* GLOBAL STYLES */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      padding: 40px;
-      color: #ddd;
-      background-color: #f4f4f4;
       margin: 0;
+      /* Use the new Inter font */
+      font-family: 'Inter', sans-serif;
+      /* Subtle background gradient */
+      background: linear-gradient(135deg, #fdfdfd 0%, #f4f4f4 100%);
+      color: #333;
     }
 
+    /* HEADLINE */
     h1 {
-      font-size: 25px;
+      font-size: 26px;
       text-align: center;
-      margin-bottom: 110px;
+      margin: 40px 0 70px 0;
+      color: #222;
+      letter-spacing: 1px;
     }
 
-    .transparent-h1 {
-      font-size: 25px;
-      text-align: center;
-      margin-bottom: 20px;
-      color: transparent;
-    }
-
+    /* MAIN CONTAINER */
     .container {
       display: flex;
       flex-direction: row;
       justify-content: center;
-      margin-top: 60px;
-      margin-bottom: 60px;
-      margin-left: 60px;
-      margin-right: 60px;
+      margin: 0 auto;
+      max-width: 1200px; /* keep content centered on wide screens */
+      padding: 0 20px;
     }
 
+    /* LEFT COLUMN: WAVE CANVAS */
     .left-column {
       flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* Add a "card" look around the canvas */
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      overflow: hidden; /* so the rounded corners show on the canvas area */
+      margin-right: 20px;
     }
 
+    #waveCanvas {
+      width: 100%;
+      height: 400px;
+      display: block;
+    }
+
+    /* RIGHT COLUMN: CONTENT */
     .right-column {
       flex: 1;
       display: flex;
       flex-direction: column;
+      justify-content: flex-start;
       align-items: center;
-      padding-left: 40px;
       text-align: center;
+    }
+
+    /* TITLES AND TEXT BLOCKS */
+    .contact-info {
+      margin-bottom: 20px;
     }
 
     .description {
       margin-bottom: 10px;
       text-align: justify;
       max-width: 90%;
-      margin-left: auto;
-      margin-right: auto;
       font-size: 18px;
+      line-height: 1.4;
     }
 
-    .contact-info {
-      text-align: center;
-      font-size: 18px;
-      margin-bottom: 10px;
-      margin-top: 10px;
+    /* TABLE-LIKE STYLING FOR DATES AND LINKS */
+    .date {
+      font-weight: 600;
+      color: #666;
+      margin-right: 10px;
     }
 
+    /* LINKS */
     .swarm-paper-link {
       font-size: 16px;
-      color: #FF8D02; /* Typical blue - light mode */
+      color: #FF8D02;
+      text-decoration: none;
+      transition: color 0.3s ease, text-decoration-color 0.3s ease;
+    }
+    .swarm-paper-link:hover {
+      color: #E16F76;
       text-decoration: underline;
     }
 
-    /* Visited link styles */
-    a:visited {
-      color: #FF8D02;
-    }
-
-    /* Light Mode Styles */
-    @media (prefers-color-scheme: light) {
-      body {
-        background-color: #f4f4f4;
-        color: #333;
+    /* MEDIA QUERIES FOR RESPONSIVENESS */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .left-column, .right-column {
+        margin: 0 0 20px 0;
+        width: 100%;
       }
     }
 
-    /* Dark Mode Styles */
+    /* DARK MODE (via prefers-color-scheme) */
     @media (prefers-color-scheme: dark) {
       body {
         background-color: #0D1117;
+        background-image: none; /* remove the light gradient in dark mode */
         color: #ddd;
+      }
+      .left-column {
+        box-shadow: none;
+        border: 1px solid #333;
       }
       .swarm-paper-link {
         color: #E16F76;
@@ -98,150 +144,68 @@
         color: #E16F76;
       }
     }
-
-    /* Toggle Switch Styles */
-    .toggle-switch {
-      position: relative;
-      display: inline-block;
-      width: 40px;
-      height: 20px;
-    }
-
-    .toggle-switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
-    .toggle-slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #ccc;
-      transition: .4s;
-    }
-
-    .toggle-slider:before {
-      position: absolute;
-      content: "";
-      height: 16px;
-      width: 16px;
-      left: 2px;
-      bottom: 2px;
-      background-color: white;
-      transition: .4s;
-    }
-
-    input:checked + .toggle-slider {
-      background-color: #2196F3;
-    }
-
-    input:focus + .toggle-slider {
-      box-shadow: 0 0 1px #2196F3;
-    }
-
-    input:checked + .toggle-slider:before {
-      transform: translateX(20px);
-    }
-
-    /* Dark Mode specific styles */
-    input:checked + .toggle-slider:before {
-      background-color: #0D1117;
-    }
-
-    /* Light Mode specific styles */
-    @media (prefers-color-scheme: light) {
-      .toggle-switch {
-        margin-left: auto;
-      }
-    }
-
-    /* Dark Mode specific styles */
-    @media (prefers-color-scheme: dark) {
-      .toggle-switch {
-        margin-right: auto;
-      }
-    }
-
-    /* Toggle Switch Animation */
-    .toggle-slider-active {
-      background-color: #2196F3;
-    }
-
-    .toggle-slider-active:before {
-      transform: translateX(20px);
-    }
-
-    /* Canvas styling to mimic the original image size */
-    #waveCanvas {
-      max-width: 100%;
-      height: auto;
-      width: 100%;
-      height: 400px;
-      display: block;
-    }
   </style>
 </head>
 
 <body>
   <h1>GZ</h1>
+
   <div class="container">
+    <!-- LEFT COLUMN: Canvas with Static Waves + Rug Push -->
     <div class="left-column">
-      <!-- Dynamic canvas element with static, dense waves and a rug push effect -->
       <canvas id="waveCanvas"></canvas>
     </div>
 
+    <!-- RIGHT COLUMN: Work, Contact, etc. -->
     <div class="right-column">
       <div class="contact-info">
-        <h4>Work</h4>
+        <h4 style="margin: 0 0 10px 0;">Work</h4>
       </div>
       <div class="description">
         <p>
           <span class="date">June 2023</span>
-          <span class="spacing">&nbsp;&nbsp;</span>
           <a href="https://gustafzach.github.io/atic" class="swarm-paper-link">ATIC Project</a>
         </p>
         <p>
           <span class="date">Sept 2022</span>
-          <span class="spacing">&nbsp;&nbsp;</span>
           <a href="https://gustafzach.github.io/bscthesis" class="swarm-paper-link">BSc Thesis</a>
         </p>
         <p>
           <span class="date">June 2022</span>
-          <span class="spacing">&nbsp;&nbsp;</span>
           <a href="https://gustafzach.github.io/ict4s" class="swarm-paper-link">ICT4S Conference Paper</a>
         </p>
         <p>
           <span class="date">June 2021</span>
-          <span class="spacing">&nbsp;&nbsp;</span>
           <a href="https://gustafzach.github.io/biodiversity" class="swarm-paper-link">Nordic Youth Position Paper on Biodiversity</a>
         </p>
       </div>
+
       <div class="contact-info">
-        <h4>Contact</h4>
-        <p>Gustaf Zachrisson<br><a href="mailto:zachgustaf@gmail.com" class="swarm-paper-link">zachgustaf@gmail.com</a></p>
+        <h4 style="margin: 0 0 10px 0;">Contact</h4>
+        <p>
+          Gustaf Zachrisson<br>
+          <a href="mailto:zachgustaf@gmail.com" class="swarm-paper-link">zachgustaf@gmail.com</a>
+        </p>
       </div>
     </div>
   </div>
 
+  <!-- JAVASCRIPT: Dense, Static Waves with Rug Push -->
   <script>
     const canvas = document.getElementById('waveCanvas');
     const ctx = canvas.getContext('2d');
 
     // Wave parameters for static waves
-    const wavePhase = 0;          // Constant phase for a static look
-    const waveFrequency = 0.02;     // Horizontal frequency of the sine waves
-    const waveAmplitude = 20;       // Base amplitude of each wave line
-    const lineCount = 50;           // More lines for a denser, woven pattern
-    const lineSpacing = 8;          // Reduced spacing for a tighter look
+    const wavePhase = 0;        // Keep waves static
+    const waveFrequency = 0.02; // Horizontal frequency
+    const waveAmplitude = 20;   // Base amplitude
+    const lineCount = 50;       // Dense wave lines
+    const lineSpacing = 8;      // Closer spacing for a woven look
 
     // "Rug push" effect parameters
-    const pushRadius = 120;         // Radius of the effect around the mouse
-    const pushStrength = 40;        // How strongly the waves are pushed
-    let mouseX = -9999, mouseY = -9999; // Start off-canvas
+    const pushRadius = 120;
+    const pushStrength = 40;
+    let mouseX = -9999, mouseY = -9999;
 
     // Resize canvas to match its displayed size
     function resizeCanvas() {
@@ -249,40 +213,45 @@
       canvas.height = canvas.offsetHeight;
     }
 
-    // Compute vertical offset based on proximity to the mouse pointer
+    // Calculate vertical offset if near mouse
     function getPushOffset(x, y) {
       const dx = x - mouseX;
       const dy = y - mouseY;
       const dist = Math.sqrt(dx * dx + dy * dy);
       if (dist < pushRadius) {
         const force = (pushRadius - dist) / pushRadius;
+        // negative => dip under mouse; switch sign if you want a bulge
         return -force * pushStrength;
       }
       return 0;
     }
 
-    // Draw multiple static wave lines with the interactive push effect
+    // Draw multiple static wave lines with push effect
     function drawWaves() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Create a gradient reminiscent of the desired electric/dynamic look
+      // Multi-stop gradient for a colorful effect
       const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      gradient.addColorStop(0, '#013a63');   // Dark Blue
-      gradient.addColorStop(0.3, '#fa4514');   // Vibrant Orange
-      gradient.addColorStop(0.6, '#2f70b1');   // Mid-tone Blue
-      gradient.addColorStop(1, '#ff4100');   // Orange
+      gradient.addColorStop(0,   '#013a63');  // Dark Blue
+      gradient.addColorStop(0.3, '#fa4514');  // Vibrant Orange
+      gradient.addColorStop(0.6, '#2f70b1');  // Mid-tone Blue
+      gradient.addColorStop(1,   '#ff4100');  // Another orange
 
       ctx.strokeStyle = gradient;
       ctx.lineWidth = 2;
 
       for (let i = 0; i < lineCount; i++) {
         ctx.beginPath();
-        // Calculate a vertical offset for each line to center the pattern
+        // Vertical offset for each line
         const lineOffset = (i - lineCount / 2) * lineSpacing;
+
         for (let x = 0; x <= canvas.width; x++) {
           const baseY = canvas.height / 2 + lineOffset;
+          // Static wave formula
           let y = baseY + waveAmplitude * Math.sin(x * waveFrequency + wavePhase + i);
+          // Add the push offset
           y += getPushOffset(x, baseY);
+
           if (x === 0) {
             ctx.moveTo(x, y);
           } else {
@@ -298,7 +267,7 @@
       requestAnimationFrame(animate);
     }
 
-    // Update mouse coordinates for the "rug push" effect
+    // Track mouse movement for the "rug push"
     canvas.addEventListener('mousemove', (e) => {
       const rect = canvas.getBoundingClientRect();
       mouseX = e.clientX - rect.left;
@@ -310,6 +279,7 @@
       mouseY = -9999;
     });
 
+    // Initialize
     window.addEventListener('load', () => {
       resizeCanvas();
       animate();
