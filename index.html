@@ -178,10 +178,12 @@
     /* Canvas styling to mimic the original image size */
     #waveCanvas {
       max-width: 100%;
-      height: auto;
       width: 100%;
       height: 400px;
       display: block;
+      /* Faded edges using a radial gradient mask */
+      -webkit-mask-image: radial-gradient(ellipse at center, white 60%, transparent 100%);
+      mask-image: radial-gradient(ellipse at center, white 60%, transparent 100%);
     }
   </style>
 </head>
