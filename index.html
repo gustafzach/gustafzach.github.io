@@ -1,347 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>GZ - Tech-Savvy & Futuristic</title>
-
-  <!-- Google Font: Inter (light, regular, semi-bold) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
-    rel="stylesheet"
-  />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>John Doe - Professional Homepage</title>
+  <!-- Google Fonts for a futuristic look -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto+Mono&display=swap" rel="stylesheet">
   <style>
-    /* RESET & GLOBALS */
-    * {
-      box-sizing: border-box;
+    /* Global Styles */
+    body {
       margin: 0;
       padding: 0;
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: 'Roboto Mono', monospace;
+      line-height: 1.6;
     }
-
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow-x: hidden;
-      font-family: 'Inter', sans-serif;
-      scroll-behavior: smooth; /* for smooth anchor scrolling */
-      background: #0b0e14;     /* fallback dark background */
-      color: #fff;
-    }
-
-    /* CANVAS: Animated Starfield */
-    #stars {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1; /* behind everything */
-      background: #0b0e14; /* fallback if canvas fails */
-    }
-
-    /* NAV BAR (optional) */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 0.5rem 2rem;
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(4px);
-      z-index: 10;
-    }
-    nav a {
-      margin-left: 1rem;
+    a {
+      color: #1DB954;
       text-decoration: none;
-      color: #ccc;
-      font-weight: 400;
-      transition: color 0.3s;
+      transition: color 0.3s, transform 0.3s;
     }
-    nav a:hover {
-      color: #fff;
+    a:hover {
+      color: #1ED760;
+      transform: scale(1.05);
     }
-
-    /* HERO SECTION */
-    .hero {
+    header {
+      background-color: #1f1f1f;
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      color: #1DB954;
+    }
+    nav ul {
+      list-style: none;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      height: 100vh; /* full screen */
-      padding: 0 2rem;
+      justify-content: space-around;
+      padding: 10px 0;
+      margin: 0;
     }
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      letter-spacing: 1px;
+    nav ul li {
+      padding: 10px 20px;
+      transition: background-color 0.3s, transform 0.3s;
+      border-radius: 5px;
     }
-    .hero p {
-      font-size: 1.25rem;
-      max-width: 600px;
-      color: #ccc;
-      margin-bottom: 2rem;
-      line-height: 1.5;
+    nav ul li:hover {
+      background-color: #282828;
+      transform: translateY(-3px);
     }
-    .hero .cta-button {
-      display: inline-block;
-      background: linear-gradient(135deg, #ff4100, #fa4514);
-      color: #fff;
-      padding: 0.75rem 1.5rem;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.3s, transform 0.3s;
-    }
-    .hero .cta-button:hover {
-      transform: translateY(-2px);
-      background: linear-gradient(135deg, #fa4514, #ff4100);
-    }
-
-    /* SECTIONS */
     section {
-      padding: 80px 20px;
+      padding: 60px 20px;
+      border-bottom: 1px solid #282828;
+      transition: background-color 0.3s;
+    }
+    section:hover {
+      background-color: #1f1f1f;
+    }
+    .container {
       max-width: 1000px;
       margin: 0 auto;
-      text-align: center;
     }
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      position: relative;
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #1DB954;
+      display: inline-block;
+      padding-bottom: 5px;
     }
-    section h2::after {
-      content: "";
-      display: block;
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(135deg, #2f70b1, #fa4514);
-      margin: 0.5rem auto 0 auto;
-      border-radius: 2px;
+    .cv-link, .pubs-list, .contact-details, .social-links {
+      margin: 20px 0;
     }
-
-    /* WORK SECTION: LISTING PROJECTS */
-    .work-item {
-      margin-bottom: 1.5rem;
-      line-height: 1.4;
+    .pubs-list ul {
+      list-style: none;
+      padding: 0;
     }
-    .work-item .date {
-      color: #ccc;
-      font-weight: 400;
-      margin-right: 0.5rem;
+    .pubs-list li {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #282828;
+      border-radius: 5px;
+      transition: background-color 0.3s;
     }
-    .work-item a {
-      color: #ff8d02;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
+    .pubs-list li:hover {
+      background-color: #282828;
     }
-    .work-item a:hover {
-      color: #fa4514;
-      text-decoration: underline;
+    .social-links a {
+      margin-right: 15px;
+      font-size: 1.5rem;
     }
-
-    /* CONTACT SECTION */
-    .contact-info p {
-      line-height: 1.6;
-      font-size: 1.1rem;
-    }
-    .contact-info a {
-      color: #ff8d02;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .contact-info a:hover {
-      color: #fa4514;
-      text-decoration: underline;
-    }
-
-    /* FOOTER */
     footer {
       text-align: center;
       padding: 20px;
-      font-size: 0.9rem;
-      color: #666;
-    }
-
-    /* MEDIA QUERIES */
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.4rem;
-      }
-      .hero p {
-        font-size: 1.1rem;
-      }
-      section h2 {
-        font-size: 1.8rem;
-      }
-    }
-
-    /* LIGHT MODE (if user’s system is in light mode) */
-    @media (prefers-color-scheme: light) {
-      body {
-        background: #fdfdfd;
-        color: #333;
-      }
-      #stars {
-        background: #fdfdfd;
-      }
-      nav {
-        background: rgba(255, 255, 255, 0.6);
-      }
-      nav a {
-        color: #333;
-      }
-      nav a:hover {
-        color: #000;
-      }
-      .hero p {
-        color: #555;
-      }
-      .work-item .date {
-        color: #666;
-      }
-      footer {
-        color: #aaa;
-      }
+      background-color: #1f1f1f;
     }
   </style>
 </head>
-
 <body>
-  <!-- Canvas for the animated starfield background -->
-  <canvas id="stars"></canvas>
 
-  <!-- Optional top navigation -->
-  <nav>
-    <a href="#hero">Home</a>
-    <a href="#work">Work</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <header class="container">
+    <h1>John Doe</h1>
+    <nav>
+      <ul>
+        <li><a href="#cv">CV</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#socials">Socials</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- HERO SECTION -->
-  <section class="hero" id="hero">
-    <h1>GZ</h1>
-    <p>Tech-savvy and professional. Passionate about research, coding, and sustainability.  
-       Minimalistic yet futuristic.</p>
-    <a href="#work" class="cta-button">See My Work</a>
-  </section>
-
-  <!-- WORK SECTION -->
-  <section id="work">
-    <h2>Work</h2>
-
-    <div class="work-item">
-      <span class="date">June 2023</span>
-      <a href="https://gustafzach.github.io/atic" target="_blank">ATIC Project</a>
-    </div>
-    <div class="work-item">
-      <span class="date">Sept 2022</span>
-      <a href="https://gustafzach.github.io/bscthesis" target="_blank">BSc Thesis</a>
-    </div>
-    <div class="work-item">
-      <span class="date">June 2022</span>
-      <a href="https://gustafzach.github.io/ict4s" target="_blank">ICT4S Conference Paper</a>
-    </div>
-    <div class="work-item">
-      <span class="date">June 2021</span>
-      <a href="https://gustafzach.github.io/biodiversity" target="_blank">
-        Nordic Youth Position Paper on Biodiversity
-      </a>
-    </div>
-  </section>
-
-  <!-- CONTACT SECTION -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <div class="contact-info">
-      <p>
-        <strong>Gustaf Zachrisson</strong><br />
-        <a href="mailto:zachgustaf@gmail.com">zachgustaf@gmail.com</a>
+  <main class="container">
+    <!-- CV Section -->
+    <section id="cv">
+      <h2 class="section-title">Curriculum Vitae</h2>
+      <p>Welcome to my professional homepage. You can view my detailed CV below:</p>
+      <p class="cv-link">
+        <a href="cv.pdf" target="_blank">Download my CV</a>
       </p>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
+    <!-- Publications Section -->
+    <section id="publications">
+      <h2 class="section-title">Publications</h2>
+      <div class="pubs-list">
+        <ul>
+          <li>
+            <strong>Research Paper Title 1</strong><br>
+            <em>Journal of Advanced Studies</em> - 2023
+          </li>
+          <li>
+            <strong>Research Paper Title 2</strong><br>
+            <em>International Conference on Future Tech</em> - 2022
+          </li>
+          <li>
+            <strong>Research Paper Title 3</strong><br>
+            <em>Innovative Science Journal</em> - 2021
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-details">
+        <p><strong>Email:</strong> <a href="mailto:john.doe@example.com">john.doe@example.com</a></p>
+        <p><strong>Phone:</strong> +1 234 567 890</p>
+        <p><strong>Address:</strong> 123 Future St, Tech City, Country</p>
+      </div>
+    </section>
+
+    <!-- Social Links Section -->
+    <section id="socials">
+      <h2 class="section-title">Socials</h2>
+      <div class="social-links">
+        <a href="https://linkedin.com/in/johndoe" target="_blank">LinkedIn</a>
+        <a href="https://github.com/johndoe" target="_blank">GitHub</a>
+        <a href="https://twitter.com/johndoe" target="_blank">Twitter</a>
+        <a href="https://facebook.com/johndoe" target="_blank">Facebook</a>
+      </div>
+    </section>
+  </main>
+
   <footer>
-    &copy; <span id="year"></span> GZ. All rights reserved.
+    <p>&copy; 2025 John Doe. All rights reserved.</p>
   </footer>
 
-  <!-- STARFIELD BACKGROUND SCRIPT -->
-  <script>
-    // Grab canvas & context
-    const starsCanvas = document.getElementById('stars');
-    const starsCtx = starsCanvas.getContext('2d');
-
-    let w, h;
-    let stars = [];
-    const numStars = 150; // Increase/decrease for more/less stars
-
-    // Star object factory
-    function createStar() {
-      return {
-        x: Math.random() * w,
-        y: Math.random() * h,
-        radius: Math.random() * 1.2,
-        speed: (Math.random() * 0.5) + 0.05, // vertical speed
-      };
-    }
-
-    // Resize canvas to fill window
-    function resize() {
-      w = starsCanvas.offsetWidth;
-      h = starsCanvas.offsetHeight;
-      starsCanvas.width = w;
-      starsCanvas.height = h;
-    }
-
-    // Initialize star array
-    function setup() {
-      resize();
-      stars = [];
-      for (let i = 0; i < numStars; i++) {
-        stars.push(createStar());
-      }
-      draw(); // initial draw
-    }
-
-    // Draw & animate the starfield
-    function draw() {
-      // Clear the canvas
-      starsCtx.clearRect(0, 0, w, h);
-
-      // Draw each star
-      starsCtx.fillStyle = 'white';
-      for (let i = 0; i < stars.length; i++) {
-        const star = stars[i];
-        starsCtx.beginPath();
-        starsCtx.arc(star.x, star.y, star.radius, 0, 2 * Math.PI);
-        starsCtx.fill();
-
-        // Move star downward
-        star.y += star.speed;
-
-        // If star goes off-screen, reset to top
-        if (star.y > h) {
-          star.x = Math.random() * w;
-          star.y = 0;
-        }
-      }
-
-      requestAnimationFrame(draw);
-    }
-
-    // On load & resize
-    window.addEventListener('load', setup);
-    window.addEventListener('resize', setup);
-
-    // Update footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
