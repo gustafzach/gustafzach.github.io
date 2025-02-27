@@ -68,11 +68,10 @@
 
     .swarm-paper-link {
       font-size: 16px;
-      color: #FF8D02; /* Typical blue - light mode */
+      color: #FF8D02;
       text-decoration: underline;
     }
 
-    /* Visited link styles */
     a:visited {
       color: #FF8D02;
     }
@@ -147,26 +146,22 @@
       transform: translateX(20px);
     }
 
-    /* Dark Mode specific styles */
     input:checked + .toggle-slider:before {
       background-color: #0D1117;
     }
 
-    /* Light Mode specific styles */
     @media (prefers-color-scheme: light) {
       .toggle-switch {
         margin-left: auto;
       }
     }
 
-    /* Dark Mode specific styles */
     @media (prefers-color-scheme: dark) {
       .toggle-switch {
         margin-right: auto;
       }
     }
 
-    /* Toggle Switch Animation */
     .toggle-slider-active {
       background-color: #2196F3;
     }
@@ -175,15 +170,29 @@
       transform: translateX(20px);
     }
 
-    /* Canvas styling to mimic the original image size */
-    #waveCanvas {
+    /* CSS Variables for Lava Lamp (also used for light/dark mode) */
+    :root {
+      --background: #f0f0f0;
+      --foreground: #222;
+      --lava-color: #e74c3c;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background: #222;
+        --foreground: #f0f0f0;
+        --lava-color: #e74c3c;
+      }
+    }
+
+    /* Canvas styling for Lava Lamp Animation */
+    #lavaCanvas {
       max-width: 100%;
       width: 100%;
       height: 400px;
       display: block;
-      /* Faded edges using a radial gradient mask */
-      -webkit-mask-image: radial-gradient(circle at center, white 45%, transparent 46%);
-      mask-image: radial-gradient(circle at center, white 45%, transparent 46%);
+      background: var(--background);
+      border: 2px solid var(--foreground);
     }
   </style>
 </head>
@@ -192,8 +201,8 @@
   <h1>GZ</h1>
   <div class="container">
     <div class="left-column">
-      <!-- Dynamic canvas element with static, dense waves and a rug push effect -->
-      <canvas id="waveCanvas"></canvas>
+      <!-- Lava Lamp Animation Canvas -->
+      <canvas id="lavaCanvas" width="600" height="400"></canvas>
     </div>
 
     <div class="right-column">
@@ -230,110 +239,115 @@
   </div>
 
   <script>
-    const canvas = document.getElementById('waveCanvas');
+    // Lava Lamp Animation Code
+    const canvas = document.getElementById('lavaCanvas');
     const ctx = canvas.getContext('2d');
+    const width = canvas.width;
+    const height = canvas.height;
 
-    // Wave parameters for static waves
-    const wavePhase = 0;          // Constant phase for a static look
-    const waveFrequency = 0.02;     // Horizontal frequency of the sine waves
-    const waveAmplitude = 20;       // Base amplitude of each wave line
-    const lineCount = 50;           // More lines for a denser, woven pattern
-    const lineSpacing = 8;          // Reduced spacing for a tighter look
-
-    // "Rug push" effect parameters
-    const pushRadius = 120;         // Radius of the effect around the mouse
-    const pushStrength = 40;        // How strongly the waves are pushed
-    let mouseX = -9999, mouseY = -9999; // Start off-canvas
-
-    // Resize canvas to match its displayed size
-    function resizeCanvas() {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    }
-
-    // Compute vertical offset based on proximity to the mouse pointer
-    function getPushOffset(x, y) {
-      const dx = x - mouseX;
-      const dy = y - mouseY;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < pushRadius) {
-        const force = (pushRadius - dist) / pushRadius;
-        return -force * pushStrength;
+    // Bubble class simulating a lava bubble
+    class Bubble {
+      constructor(x, y, radius) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        // Initial random velocities
+        this.vx = (Math.random() - 0.5) * 2;
+        this.vy = -Math.random() * 1.5 - 0.5;
+        this.ax = 0;
+        this.ay = 0;
       }
-      return 0;
-    }
-
-    // Draw multiple static wave lines with the interactive push effect
-    function drawWaves() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-      // Create a gradient reminiscent of the desired electric/dynamic look
-      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      gradient.addColorStop(0, '#013a63');    // Dark Blue
-      gradient.addColorStop(0.3, '#fa4514');  // Vibrant Orange
-      gradient.addColorStop(0.6, '#2f70b1');  // Mid-tone Blue
-      gradient.addColorStop(1, '#ff4100');    // Orange
-    
-      ctx.strokeStyle = gradient;
-      ctx.lineWidth = 2;
-    
-      const centerX = canvas.width / 2;
-      const centerY = canvas.height / 2;
-    
-      for (let i = 0; i < lineCount; i++) {
-        ctx.beginPath();
-    
-        // Each line's vertical offset in the center (before spherical warp)
-        const lineOffset = (i - lineCount / 2) * lineSpacing;
-    
-        for (let x = 0; x <= canvas.width; x++) {
-          // Convert x to [-1, 1]
-          const xNorm = (x - centerX) / centerX;  
-          // This factor goes from 1 at center to 0 at edges
-          const factor = Math.sqrt(Math.max(0, 1 - xNorm * xNorm));
-    
-          // Base Y is in the center, plus a line offset compressed by 'factor'
-          const baseY = centerY + lineOffset * factor;
-    
-          // The wave is also multiplied by 'factor' so it shrinks near edges
-          let y = baseY + waveAmplitude * factor * Math.sin(x * waveFrequency + wavePhase + i);
-    
-          // Add "push" effect if desired
-          y += getPushOffset(x, baseY);
-    
-          if (x === 0) {
-            ctx.moveTo(x, y);
-          } else {
-            ctx.lineTo(x, y);
+      
+      update() {
+        // Reset acceleration; simulate a subtle upward buoyancy
+        this.ax = 0;
+        this.ay = -0.005;
+        
+        // Add repelling force if the mouse is nearby
+        if (mouse.x !== undefined && mouse.y !== undefined) {
+          const dx = this.x - mouse.x;
+          const dy = this.y - mouse.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < 100) {
+            const force = (100 - dist) / 100;
+            this.ax += (dx / dist) * force * 0.5;
+            this.ay += (dy / dist) * force * 0.5;
           }
         }
-        ctx.stroke();
+        
+        // Update velocity with friction
+        this.vx = (this.vx + this.ax) * 0.99;
+        this.vy = (this.vy + this.ay) * 0.99;
+        this.x += this.vx;
+        this.y += this.vy;
+        
+        // Bounce off horizontal edges
+        if (this.x - this.radius < 0) {
+          this.x = this.radius;
+          this.vx *= -1;
+        }
+        if (this.x + this.radius > width) {
+          this.x = width - this.radius;
+          this.vx *= -1;
+        }
+        // Bounce off the top edge
+        if (this.y - this.radius < 0) {
+          this.y = this.radius;
+          this.vy *= -1;
+        }
+        // Reset bubble if it reaches the bottom
+        if (this.y + this.radius > height) {
+          this.x = Math.random() * width;
+          this.y = height - this.radius;
+          this.vx = (Math.random() - 0.5) * 2;
+          this.vy = -Math.random() * 1.5 - 0.5;
+        }
+      }
+      
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+        // Use CSS variable for lava color (adapts to light/dark mode)
+        ctx.fillStyle = getComputedStyle(document.documentElement)
+                           .getPropertyValue('--lava-color');
+        ctx.fill();
       }
     }
 
-
-    function animate() {
-      drawWaves();
-      requestAnimationFrame(animate);
+    // Create multiple bubbles
+    const bubbles = [];
+    const numBubbles = 20;
+    for (let i = 0; i < numBubbles; i++) {
+      const radius = 20 + Math.random() * 20;
+      const x = Math.random() * (width - 2 * radius) + radius;
+      const y = height - radius - Math.random() * 50;
+      bubbles.push(new Bubble(x, y, radius));
     }
 
-    // Update mouse coordinates for the "rug push" effect
+    // Track mouse position relative to canvas
+    const mouse = {};
     canvas.addEventListener('mousemove', (e) => {
       const rect = canvas.getBoundingClientRect();
-      mouseX = e.clientX - rect.left;
-      mouseY = e.clientY - rect.top;
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
     });
-
     canvas.addEventListener('mouseleave', () => {
-      mouseX = -9999;
-      mouseY = -9999;
+      mouse.x = undefined;
+      mouse.y = undefined;
     });
 
-    window.addEventListener('load', () => {
-      resizeCanvas();
-      animate();
-    });
-    window.addEventListener('resize', resizeCanvas);
+    // Animation loop
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      bubbles.forEach(bubble => {
+        bubble.update();
+        bubble.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+    
+    // Start animation
+    animate();
   </script>
 </body>
 
